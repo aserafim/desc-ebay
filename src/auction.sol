@@ -57,4 +57,12 @@ contract Auction{
         
     }
 
+    function min(uint a, uint b) pure internal returns(uint){
+        if(a <= b) {
+            return b;
+        }else{
+            return a;
+        }
+    }
+
 }
