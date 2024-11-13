@@ -1,6 +1,15 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.28;
 
+contract AuctionCreator{
+    Auction[] public auctions;
+
+    function createAuction() public{
+        Auction newAuction = new Auction(msg.sender);
+        auctions.push(newAuction);
+    }
+}
+
 contract Auction{
 
     address payable public owner;
@@ -22,8 +31,8 @@ contract Auction{
     mapping(address => uint) public bids;
     uint bidIncrement;
 
-    constructor(){
-        owner = payable(msg.sender);
+    constructor(address eoa){
+        owner = payable(eoa);
         auctionState = State.Running;
         
         // calculamos o tempo de validade
