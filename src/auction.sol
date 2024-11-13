@@ -53,8 +53,9 @@ contract Auction{
         _;
     }
 
-    function placeBid() public payable notOwner afterStart beforeEnd{
-        
+    modifier onlyOwner{
+        require(msg.sender == owner);
+        _;
     }
 
     function min(uint a, uint b) pure internal returns(uint){
@@ -62,6 +63,31 @@ contract Auction{
             return b;
         }else{
             return a;
+        }
+    }
+
+    function cancelAuction() public onlyOwner{
+        auctionState = State.Canceled;
+    }
+
+    function placeBid() public payable notOwner afterStart beforeEnd{
+        // exge que a auction esteja em funcionamento
+        require(auctionState == State.Running);
+        // o valor mínimo de lances é 100
+        require(msg.value >= 100);
+
+        // armazena o total que o jogador em questão
+        // já lançou na auction
+        uint currentBid = bids[msg.sender] + msg.value;
+        require(currentBid > highestBindingBid);
+
+        bids[msg.sender] = currentBid;
+
+        if(currentBid <= bids[highestBidder]){
+            highestBindingBid = min(currentBid + bidIncrement, bids[highestBidder]);
+        }else{
+            highestBindingBid = min(currentBid, bids[highestBidder] + bidIncrement);
+            highestBidder = payable(msg.sender);
         }
     }
 

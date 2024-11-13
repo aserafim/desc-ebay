@@ -44,6 +44,13 @@
 			},
 			{
 				"inputs": [],
+				"name": "cancelAuction",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "endBlock",
 				"outputs": [
 					{
@@ -156,11 +163,11 @@
 	},
 	"sources": {
 		"src/auction.sol": {
-			"keccak256": "0x97b29036a0029081f6c6c9db2c7ff184ff8000ee2c7417f9793a72e855ec48ba",
+			"keccak256": "0xd5aa369e45863a6816efe7057b58f1d1ad02dfbc76a0c65fcb9229dde70816a2",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://4e0188ca9bc395b1a82f95b823f10bc1bdced1eba8793fcacfb09eaaec2d08c6",
-				"dweb:/ipfs/Qme95nm9aYDPEs5vBEeF4jg8jWomvGFEXfaw3GtFrLjHfw"
+				"bzz-raw://676d522a1642739b8480c39eac97a9b4083a0a48f550e8f1ae382605c89b8b81",
+				"dweb:/ipfs/QmRbFv8kSbQsE65ujYQkMKw4amNrCqstC9BL7MTgfyjpnP"
 			]
 		}
 	},
