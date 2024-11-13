@@ -115,6 +115,10 @@ contract Auction{
                 }
             }
         }
+        // zera os bids do solicitante
+        bids[recipient] = 0;
+
+        // envia o valor ao solicitante
         recipient.transfer(value);
     }
 }
